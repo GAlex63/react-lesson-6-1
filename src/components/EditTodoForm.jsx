@@ -1,11 +1,13 @@
 import { useState } from "react";
 
-export function EditTodoForm({editTitle, todo}) {
+export function EditTodoForm({editTitle, todo, setIsEditingTitle}) {
     const [value, setValue] = useState(todo.title);
 
     const handleSubmit = (event) => {
         event.preventDefault();
         editTitle(value, todo.id)
+        setIsEditingTitle(false)
+
     }
 
     return(

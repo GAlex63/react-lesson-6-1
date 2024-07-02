@@ -1,4 +1,8 @@
-export default function useEdit(todos, setTodos, isEditing) {
+import { useState } from 'react';
+
+export const useEdit = (todos, setTodos, isEditing) => {
+	const [isEditingTitle, setIsEditingTitle] = useState(false);
+
 	const editTodo = (id) => {
 		setTodos(
 			todos.map((todo) =>
@@ -15,5 +19,5 @@ export default function useEdit(todos, setTodos, isEditing) {
 		);
 	};
 
-	return { editTodo, editTitle };
-}
+	return { editTodo, editTitle, isEditingTitle, setIsEditingTitle };
+};

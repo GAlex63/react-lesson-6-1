@@ -1,16 +1,16 @@
-import { EditTodoForm } from "./EditTodoForm";
-import { Todo } from "./Todo";
+import { Link } from 'react-router-dom'
 
-export function TodoList({ todos, editTitle, deleteTodo, editTodo, toggleComplete, searchQuery }) {
+export function TodoList({ todos }) {
 
-   return( 
-    todos.map((todo) => todo.isEditing ? 
-    (<EditTodoForm editTitle={editTitle} todo={todo} />
-) : 
-(<Todo 
-    key={todo.id} 
-    title={todo} 
-    deleteTodo={deleteTodo} 
-    editTodo={editTodo} 
-    />))
-)}
+return (
+    <div className='todo-list'>
+        {todos.map((todo) => (
+            <Link key={todo.id} to={`/task/${todo.id}`} className='todo-item'>
+            {todo.title.length > 20 ? `${todo.title.substring(0, 20)}...` : todo.title}
+            </Link>
+        ))}
+    </div>
+    )  
+}
+
+
